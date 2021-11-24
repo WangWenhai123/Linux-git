@@ -1,0 +1,57 @@
+ls                    //查看目录信息，-a：显示所有文件及目录 (. 开头的隐藏文件也会列出)；-l：除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出
+ll                    //等效于ls -al，并不是Linux的基本命令
+cd <directory>        //切换到当前目录
+pwd                   //当前路径显示
+uname -a              //显示系统全部信息
+clear                 //清屏
+cat <file>            //显示文件内容
+sudo                  //以root权限运行
+sudo su <user>        //切换到其他用户
+sudo su               //切换到root用户
+touch <file>          //创建文件
+mkdir <directory>     //创建文件夹
+cp <file1> <file2>    //将文件1复制一份，命名为文件2
+rm <file>             //删除文件，-f：强制删除；-r：递归，将目录里面的文件全部删除
+mv <file or directory> <file or directory>    //后一个参数为不同目录时，将文件或文件夹移动到另一个目录；后一个参数为同一目录下时，将文件或文件夹重命名
+ifconfig              //显示或设置网络设备，需要安装net-tools
+ip a                  //查看ip信息
+reboot                //重启
+poweroff              //关机
+sync                  //数据同步写入磁盘
+find -name <file name>               //查找文件
+grep <string> <file or directory>    //查找文件里符合条件的字符串，-r：递归，后一个参数为文件时不加-r，后一个参数为目录时必须加-r；-n：出现字符串的行数；-i：忽略大小写
+du <file or directory>               //显示指定的目录或文件所占用的磁盘空间，单位为K。-h：以K，M，G为单位，提高信息的可读性；-s：仅显示总计；--max-depth=<目录层数> 超过指定层数的目录后，予以忽略
+df                    //显示目前在 Linux 系统上的文件系统磁盘使用情况统计
+gedit <file>          //gedit编辑文件
+vim <file>            //vim编辑文件
+sudo apt install <software>      //使用apt工具安装软件
+sudo dpkg -i <.deb file name>    //手动安装已下载好的.deb安装包
+dpkg -l               //查看已安装的软件包及版本
+sudo apt update       //已安装的软件包是否有可用的更新，给出汇总报告
+sudo apt upgrade      //更新已安装的软件包
+sudo apt remove --purge <software>    //卸载软件
+./<executable file>   //执行一个可执行文件
+
+
+
+
+/dev/sd*为磁盘文件，比如插上的U盘在/dev/目录里以sd*文件为显示的设备文件
+/dev/sdb表示U盘，/dev/sdb1表示U盘的第1个分区
+sudo umount /media/wwh/udisk/    //取消U盘挂载
+sudo mount /dev/sdb1 /media/wwh/udisk/    //将U盘的sdb1分区挂载到udisk文件夹，-o iocharset=utf8：设置为UTF8编码
+sudo fdisk -l     //显示当前分区情况
+sudo fdisk /dev/sdb    //对U盘进行操作（注意不是对sdb1，也就是fdisk的对象是U盘而不是分区，操作前需要umount），输入m查看帮助后，p：打印分区表，d：删除分区，n：添加新分区，t：更改分区类型；w：保存并退出，q：不保存退出
+sudo mkfs -t vfat /dev/sdb1    //在sdb1分区上建立vfat文件系统（此文件系统能被windows识别并使用）
+1个扇区是512字节，每个分区的前2048个扇区是保存分区相关信息，必须保留
+U盘没有分区后，应该先新建分区，然后修改分区类型为c（W95 FAT32（LBA）），然后新建文件系统为vfat。
+
+
+
+ll的内容详解：
+第1列表示文件类型，-表示普通文件；d表示目录；l表示链接文件；p表示管理文件；b表示块设备文件；c表示字符设备文件；s表示套接字文件；
+第2列表示文件属性，r表示读取权限，w表示写入权限，x表示执行权限，-表示没有权限；前3个表示文件创建者/所有者对该文件所具有的权限，中间3列表示创建者/所有者所在的组的其他用户所具有的权限，最后3列表示其他组的其他用户所具有的权限
+第3列表示目录/链接个数
+第4列和第5列表示所有者/创建者及其所在的组
+
+.表示当前目录，..表示上一级目录，/表示根目录，~表示用户根目录
+
