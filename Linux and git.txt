@@ -30,6 +30,11 @@ dpkg -l               //查看已安装的软件包及版本
 sudo apt update       //已安装的软件包是否有可用的更新，给出汇总报告
 sudo apt upgrade      //更新已安装的软件包
 sudo apt remove --purge <software>    //卸载软件
+chown <user> <file or directory>    //设置文件或文件夹的所有者和文件关联组为user用户。-R：处理指定目录以及其子目录下的所有文件；-h ：修复符号链接
+chgrp <group> <file or directory>    //变更文件或目录的所属群组为group群组。-R：处理指定目录以及其子目录下的所有文件
+chmod 777 <file or directory>   //修改文件夹及其所有子文件夹的用户访问权限为所有用户。-R：处理指定目录以及其子目录下的所有文件
+
+
 ./<executable file>   //执行一个可执行文件
 
 
@@ -55,3 +60,18 @@ ll的内容详解：
 
 .表示当前目录，..表示上一级目录，/表示根目录，~表示用户根目录
 
+
+
+
+
+git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
+git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
+git stash                          //将当前仓库的修改存储起来，仓库恢复干净
+git stash save <message>           //存储的时候添加信息，方便查找
+git stash list                     //存储区的所有的存储
+
+本地仓库修改后准备提交时，发现远程仓库有了新的提交：先git stash保存修改，再git pull拉取最新提交，最后再git stash pop合并修改。如果有冲突，手动修改冲突
+
+
+
+使用win10自带的ssh服务：打开cmd或powershell，输入：ssh 用户名@ip地址
