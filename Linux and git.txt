@@ -62,6 +62,22 @@ ll的内容详解：
 
 
 
+Linux常用压缩格式：.tar, .tar.gz, .tar.bz2。.tar只是将文件打包，.tar.gz和.tar.bz2才是压缩
+gzip <file or directory>     //将文件或文件夹压缩成.gz。-d：解压缩；-r：递归，压缩或解压缩文件夹必须使用（只是对文件夹内所有文件进行压缩，并没有打包，亦即所有文件会变成文件名.gz，但并没有一个压缩包）
+bzip2 <file or directory>    //将文件或文件夹压缩成.bz2。-d：解压缩；-z：压缩
+tar -vcf <file1>.tar <file or directory>         //将文件或文件夹打包成file1.tar（并没有压缩）。-v：显示操作过程；-c：创建新的备份文件；-f：指定备份文件
+tar -vcjf <file1>.tar.bz2 <file or directory>    //将文件或文件夹压缩成file1.tar.bz2。-j：使用bzip2压缩
+tar -vxjf <file>.tar.bz2                         //将file.tar.bz2解压缩。-x：解压缩
+tar -vczf <file1>.tar.gz <file or directory>     //将文件或文件夹压缩成file1.tar.gz。-z：使用gzip压缩
+tar -vxzf <file1>.tar.gz                         //将file.tar.gz解压缩
+
+zip -v <file1>.zip <file or directory>           //将文件或文件夹压缩成file1.zip。-r：递归
+unzip <file>.rar                                 //将file.zip解压缩
+Linux使用rar压缩或解压缩时需要安装rar。
+rar a <file1>.rar <file or directory>            //将文件或文件夹压缩成file1.rar
+rar x <file>.rar                                 //将file.rar解压缩
+
+
 
 
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
