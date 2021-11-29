@@ -80,6 +80,18 @@ rar x <file>.rar                                 //将file.rar解压缩
 
 
 
+find . -name "gpio*" -print                     //当前目录及子目录中查找所有的以"gpio"开头的文件
+find . -name "[a-z]*[4-9].log" -print           //在当前目录查找文件名以一个小写字母开头，最后是4到9加上.log结束的文件（亦即支持通配符）
+find . -perm 755 -print                         //在当前目录下查找文件权限位为755的文件
+find . -user whwang16 -print                    //在当前目录下查找文件属主为whwang16的文件
+find . -group whwang16 -print                   //在当前目录下查找属于whwang16用户组的文件
+find . -path ./User -prune -o -name "*.c" -print    //在当前目录下，排除./User目录，查找以".c"结尾的文件
+find . -type d -print                           //在当前目录下查找所有的目录（ll中指代普通文件的是"-"，find类型为文件的是"f"）
+
+
+
+
+
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
 git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
 git stash                          //将当前仓库的修改存储起来，仓库恢复干净
