@@ -92,11 +92,42 @@ find . -type d -print                           //在当前目录下查找所有
 
 
 
+pam_tally2                                   //查询所有用户登陆失败的次数
+pam_tally2 --user <user>                     //查询user用户登陆失败的次数
+pam_tally2 --user=<user> --reset             //重置user用户登陆失败的次数
+
+
+
+git add <file>               //添加工作区里修改的文件到暂存区
+git commit -m "  "           //将暂存区的修改全部提交，双引号里的内容为提交说明
+git commit -am "  "          //相比于-m省掉了git add步骤，即直接将工作区里所有修改全部提交
+git commit -m "summary" -m ' //类似github desktop提交修改，单引号回车后可输入多行description，最后再以一个单引号结束
+git restore <file>           //撤销文件的修改（文件还未git add到暂存区）
+git restore --staged <file>  //将文件从暂存区中删除（文件已经git add到暂存区），但不会更改文件的内容
+git diff                     //当工作区有改动，暂存区为空，diff的对比是“工作区与最后一次commit提交的仓库的共同文件”；
+                             //当工作区有改动，暂存区不为空，diff对比的是“工作区与暂存区的共同文件”
+git diff HEAD -- <file>      //对比工作区中的文件与HEAD指向的提交的仓库的文件的差异
+git log                      //查看提交日志
+git log --pretty=oneline     //查看提交日志，每个提交日志以一行的形式显示
+git reflog                   //查看记录的每一次命令（能查看回退版本之后的更新的版本的操作）
+git reset --hard 版本号      //回退到某个版本
+
+git branch -a                //查看所有分支
+git branch 分支名            //创建分支
+git branch -d 分支名         //删除分支
+git checkout 分支名          //切换分支
+git switch 分支名            //切换分支（新命令）
+git checkout -b 分支名       //创建分支，然后切换到这个分支，等同于(git branch 分支名)+(git checkout 分支名)
+git switch -c 分支名         //创建分支，然后切换到这个分支（新命令）
+
+git pull <远程主机名> <远程分支名>:<本地分支名>     //从远程获取代码并合并本地的版本。例：git pull origin master:brantest
+
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
 git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
 git stash                          //将当前仓库的修改存储起来，仓库恢复干净
 git stash save <message>           //存储的时候添加信息，方便查找
 git stash list                     //存储区的所有的存储
+git stash pop                      //恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除
 
 本地仓库修改后准备提交时，发现远程仓库有了新的提交：先git stash保存修改，再git pull拉取最新提交，最后再git stash pop合并修改。如果有冲突，手动修改冲突
 
