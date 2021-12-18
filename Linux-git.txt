@@ -110,26 +110,47 @@ git diff HEAD -- <file>      //对比工作区中的文件与HEAD指向的提交
 git log                      //查看提交日志
 git log --pretty=oneline     //查看提交日志，每个提交日志以一行的形式显示
 git reflog                   //查看记录的每一次命令（能查看回退版本之后的更新的版本的操作）
-git reset --hard 版本号      //回退到某个版本
+git reset --hard 版本号      //回退到某个版本（工作区里不存在之前所做的修改）
+git reset --soft 版本号      //回退到某个版本（工作区里保存之前所做的修改）
 
-git branch -a                //查看所有分支
+git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
+git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
+git pull <远程主机名> <远程分支名>:<本地分支名>     //从远程获取代码并合并本地的版本。例：git pull origin master:brantest
+git branch --set-upstream branch-name origin/branch-name    //建立本地分支和远程分支的关联
+
+git branch -a                //查看远程分支和本地分支
 git branch 分支名            //创建分支
 git branch -d 分支名         //删除分支
 git checkout 分支名          //切换分支
 git switch 分支名            //切换分支（新命令）
 git checkout -b 分支名       //创建分支，然后切换到这个分支，等同于(git branch 分支名)+(git checkout 分支名)
 git switch -c 分支名         //创建分支，然后切换到这个分支（新命令）
+git merge 分支名             //合并指定分支到当前分支
 
-git pull <远程主机名> <远程分支名>:<本地分支名>     //从远程获取代码并合并本地的版本。例：git pull origin master:brantest
-
-git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
-git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
 git stash                          //将当前仓库的修改存储起来，仓库恢复干净
-git stash save <message>           //存储的时候添加信息，方便查找
+git stash save "message"           //存储的时候添加message，方便查找
 git stash list                     //存储区的所有的存储
 git stash pop                      //恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除
+git stash pop stash@{0}            //恢复stash@{0}，并删除stash@{0}
+git stash apply                    //恢复之前缓存的工作目录，不删除缓存堆栈中的对应stash
+git stash apply stash@{1}          //恢复stash@{1}，不删除stash@{1}
+git stash drop stash@{2}           //丢弃stash@{2}存储，从列表中删除这个存储
+git cherry-pick <版本号>            //将指定版本号的提交应用到当前分支
+
+git tag <name>                     //在当前分支的最新提交上打一个标签
+git tag                            //查看所有标签（标签不是按时间顺序列出，而是按字母排序的）
+git tag <name> <版本号>             //在版本号的提交上打一个标签
+git show <tagname>                 //查看标签信息
+git tag -a <tagname> -m "version 0.1 released" 1094adb    //给标签添加说明，-a指定标签名，-m指定说明文字
+git tag -d <tagname>               //删除标签
 
 本地仓库修改后准备提交时，发现远程仓库有了新的提交：先git stash保存修改，再git pull拉取最新提交，最后再git stash pop合并修改。如果有冲突，手动修改冲突
+
+多人协作的工作模式：
+1、本地commit之后，用git push origin <branch-name>推送自己的修改；
+2、如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+3、如果合并有冲突，则解决冲突，并在本地提交；
+4、没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
 
 
 
