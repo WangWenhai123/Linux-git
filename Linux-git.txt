@@ -99,6 +99,8 @@ pam_tally2 --user=<user> --reset             //重置user用户登陆失败的�
 
 
 git add <file>               //添加工作区里修改的文件到暂存区
+git add .                    //不加参数默认为将修改操作的文件和未跟踪新添加的文件添加到git系统的暂存区，注意不包括删除的文件
+git add -A .                 //将所有的已跟踪的文件的修改与删除和新增的未跟踪的文件都添加到暂存区
 git commit -m "  "           //将暂存区的修改全部提交，双引号里的内容为提交说明
 git commit -am "  "          //相比于-m省掉了git add步骤，即直接将工作区里所有修改全部提交
 git commit -m "summary" -m ' //类似github desktop提交修改，单引号回车后可输入多行description，最后再以一个单引号结束
@@ -112,6 +114,11 @@ git log --pretty=oneline     //查看提交日志，每个提交日志以一行�
 git reflog                   //查看记录的每一次命令（能查看回退版本之后的更新的版本的操作）
 git reset --hard 版本号      //回退到某个版本（工作区里不存在之前所做的修改）
 git reset --soft 版本号      //回退到某个版本（工作区里保存之前所做的修改）
+
+git add -i                   //通过交互式拣选操作作用于版本库中已被跟踪的文件中的执行过修改与删除操作的文件
+update：把已经tracked的文件添加到暂存区中
+revert：把已经添加到暂存区中的文件从暂存区中剔除
+add untracked：将untracked状态的文件修改为tracked状态并添加到暂存区中
 
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
 git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
@@ -127,7 +134,7 @@ git checkout -b 分支名       //创建分支，然后切换到这个分支，�
 git switch -c 分支名         //创建分支，然后切换到这个分支（新命令）
 git merge 分支名             //合并指定分支到当前分支
 
-git stash                          //将当前仓库的修改存储起来，仓库恢复干净
+git stash                          //将当前仓库的修改存储起来，仓库恢复干净。-u可以添加untracked的文件
 git stash save "message"           //存储的时候添加message，方便查找
 git stash list                     //存储区的所有的存储
 git stash pop                      //恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除
