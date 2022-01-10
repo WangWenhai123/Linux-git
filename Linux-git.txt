@@ -35,7 +35,7 @@ chgrp <group> <file or directory>    //变更文件或目录的所属群组为gr
 chmod 777 <file or directory>   //修改文件夹及其所有子文件夹的用户访问权限为所有用户。-R：处理指定目录以及其子目录下的所有文件
 
 
-./<executable file>   //执行一个可执行文件
+
 
 
 
@@ -52,6 +52,10 @@ U盘没有分区后，应该先新建分区，然后修改分区类型为c（W95
 
 
 
+
+
+
+
 ll的内容详解：
 第1列表示文件类型，-表示普通文件；d表示目录；l表示链接文件；p表示管理文件；b表示块设备文件；c表示字符设备文件；s表示套接字文件；
 第2列表示文件属性，r表示读取权限，w表示写入权限，x表示执行权限，-表示没有权限；前3个表示文件创建者/所有者对该文件所具有的权限，中间3列表示创建者/所有者所在的组的其他用户所具有的权限，最后3列表示其他组的其他用户所具有的权限
@@ -59,6 +63,10 @@ ll的内容详解：
 第4列和第5列表示所有者/创建者及其所在的组
 
 .表示当前目录，..表示上一级目录，/表示根目录，~表示用户根目录
+
+
+
+
 
 
 
@@ -76,6 +84,22 @@ unzip <file>.rar                                 //将file.zip解压缩
 Linux使用rar压缩或解压缩时需要安装rar。
 rar a <file1>.rar <file or directory>            //将文件或文件夹压缩成file1.rar
 rar x <file>.rar                                 //将file.rar解压缩
+
+
+
+
+
+
+
+Linux用户记录在/etc/passwd文件里
+Linux用户密码记录在/etc/shadow文件里
+sudo adduser <user>                              //添加用户user
+sudo deluser <user>                              //删除用户user
+sudo addgroup <group>                            //添加用户组group
+sudo delgroup <group>                            //删除用户组group
+
+
+
 
 
 
@@ -119,6 +143,51 @@ git add -i                   //通过交互式拣选操作作用于版本库中�
 update：把已经tracked的文件添加到暂存区中
 revert：把已经添加到暂存区中的文件从暂存区中剔除
 add untracked：将untracked状态的文件修改为tracked状态并添加到暂存区中
+
+
+
+vim使用：
+打开vim后，默认处于指令模式，按a进入编辑模式；或按:或/或?进入命令行模式
+
+命令行模式下：
+w：保存；
+q：退出；
+x（或wq）：保存并退出；
+!：强制执行；
+
+指令模式下：
+dd：删除光标所在行；
+3dd：删除光标所在行及以下2行；
+u：撤销；
+.：重复上一个操作；
+yy：复制光标所在行；
+3yy：复制光标所在行及以下2行；
+p：粘贴内容到光标下一行；
+P：粘贴内容到光标上一行；
+
+
+
+
+
+
+一个 C/C++文件要经过预处理(preprocessing)、编译(compilation)、汇编(assembly)和链接(linking)等 4 步才能变成可执行文件。
+sudo apt install build-essential       //Ubuntu安装gcc
+gcc参数：
+-E：预处理；
+-c：预处理、编译、汇编源文件，不链接为可执行文件，编译器将输入的.c 文件编译为.o 的目标文件；
+-o：<输出文件名> 用来指定编译结束以后的输出文件名，如果不使用这个选项的话 GCC 默认编译出来的可执行文件名字为 a.out。
+-g：添加调试信息，如果要使用调试工具(如 GDB)的话就必须加入此选项，此选项指示编译的时候生成调试所需的符号信息。
+-O：对程序进行优化编译，如果使用此选项的话整个源代码在编译、链接的的时候都会进行优化，这样产生的可执行文件执行效率就高。
+-O2：比-O 更幅度更大的优化，生成的可执行效率更高，但是整个编译过程会很慢。
+-I：指定头文件目录；
+-L：指定链接时头文件目录；
+gcc编译多个源文件：gcc -o <object file> <source file1> <source file2> ...    //souece file可以是源文件，也可以是编译生成的.o文件
+
+
+
+
+
+
 
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
 git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
