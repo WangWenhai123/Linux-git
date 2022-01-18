@@ -260,3 +260,9 @@ writable = yes
 
 
 Ubuntu安装ssh服务器：sudo apt install openssh-server
+
+
+
+VS Code远程开发：
+1、安装remote development
+2、点击左下角的打开远程窗口，选择connect current window to host，输入whwang16@172.30.12.89，然后输入远程登陆密码
