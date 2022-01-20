@@ -242,12 +242,12 @@ git tag -d <tagname>               //删除标签
 
 
 Ubuntu安装samba服务器：
-1、sudo apt install samba
-2、sudo vim /etc/samba/smb.conf
-3、在文件最后添加以下内容：
+1、sudo apt update
+2、sudo apt install samba
+3、sudo vim /etc/samba/smb.conf
+4、在文件最后添加以下内容：
 [wwh]
 comment = wwh folder
-browseable = yes
 path = /home/wwh/
 create mask = 0700
 directory mask = 0700
@@ -255,9 +255,12 @@ valid users = wwh
 force user = wwh
 force group = wwh
 public = yes
+guest ok=yes
+read only=no
+browseable = yes
 available = yes
 writable = yes
-4、sudo chmod 777 /home/wwh/
+5、按照需求更改共享文件夹的权限，例如chmod 777 /home/wwh/
 5、sudo service smbd restart
 6、在Windows资源管理器里映射网络驱动器：\\192.168.1.209\wwh
 
