@@ -135,6 +135,7 @@ git diff                     //当工作区有改动，暂存区为空，diff的
 git diff HEAD -- <file>      //对比工作区中的文件与HEAD指向的提交的仓库的文件的差异
 git log                      //查看提交日志
 git log --pretty=oneline     //查看提交日志，每个提交日志以一行的形式显示
+git log --graph --decorate --oneline --all    //以树形图形式查看log
 git reflog                   //查看记录的每一次命令（能查看回退版本之后的更新的版本的操作）
 git reset --hard 版本号      //回退到某个版本（工作区里不存在之前所做的修改）
 git reset --soft 版本号      //回退到某个版本（工作区里保存之前所做的修改）
@@ -190,10 +191,14 @@ gcc编译多个源文件：gcc -o <object file> <source file1> <source file2> ..
 
 
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
-git push -u origin master          //将本地仓库的master分支的提交推送到远程仓库的origin分支（-u适用于第一次推送）
-git pull <远程主机名> <远程分支名>:<本地分支名>     //从远程获取代码并合并本地的版本。例：git pull origin master:brantest
-git branch --set-upstream branch-name origin/branch-name    //建立本地分支和远程分支的关联
+git push origin dev:dev1           //将本地仓库的dev分支的提交推送到远程库的dev1分支
+git push origin dev                //将本地仓库的dev分支的提交推送到远程库的dev分支
+git fetch origin dev               //将某个远程主机的更新全部取回本地仓库
+git pull origin dev1:dev           //将远程库的dev1分支拉取过来并与本地的dev分支合并
+git pull origin dev                //将远程库的dev分支拉取过来并与本地的dev分支合并
+git pull=git fetch+git merge
 
+git branch --set-upstream branch-name origin/branch-name    //建立本地分支和远程分支的关联
 git branch -a                //查看远程分支和本地分支
 git branch 分支名            //创建分支
 git branch -d 分支名         //删除分支
@@ -265,4 +270,4 @@ Ubuntu安装ssh服务器：sudo apt install openssh-server
 
 VS Code远程开发：
 1、安装remote development
-2、点击左下角的打开远程窗口，选择connect current window to host，输入whwang16@172.30.12.89，然后输入远程登陆密码
+2、Ctrl+Shift+P，输入remote-ssh，选择connect current window to host，输入whwang16@172.30.12.89，然后输入远程登陆密码
