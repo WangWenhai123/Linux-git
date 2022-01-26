@@ -274,3 +274,9 @@ Ubuntu安装ssh服务器：sudo apt install openssh-server
 VS Code远程开发：
 1、安装remote development
 2、Ctrl+Shift+P，输入remote-ssh，选择connect current window to host，输入whwang16@172.30.12.89，然后输入远程登陆密码
+
+
+
+2837服务器密码：iflytek@123
+2831P服务器密码：iflytek@2021
+深圳WiFi密码：iflyttest
