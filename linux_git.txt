@@ -200,15 +200,19 @@ git pull origin dev                //将远程库的dev分支拉取过来并与�
 git rebase 01234567^ 89abcdef --onto dev    //将另一分支的起始01234567提交到终止89abcdef提交（前开后闭，加了^后就是前闭后闭）复制到dev分支上。复制后HEAD处于游离状态，需要执行git switch dev和git reset --hard fedcba98（fedcba98是89abcdef复制过来后新的提交值）
 
 
-git branch --set-upstream branch-name origin/branch-name    //建立本地分支和远程分支的关联
+git branch -u origin/dev    //建立本地当前分支和远程dev分支的关联，等效于git branch --set-upstream-to=origin/dev
+git branch -u origin/dev dev    //建立本地dev分支和远程dev分支的关联，等效于git branch --set-upstream-to=origin/dev dev
+git branch --unset-upstream    //取消当前分支的upstream
+git branch --unset-upstream dev    //取消dev分支的upstream
 git branch -a                //查看远程分支和本地分支
-git branch 分支名            //创建分支
-git branch -d 分支名         //删除分支
-git checkout 分支名          //切换分支
-git switch 分支名            //切换分支（新命令）
-git checkout -b 分支名       //创建分支，然后切换到这个分支，等同于(git branch 分支名)+(git checkout 分支名)
-git switch -c 分支名         //创建分支，然后切换到这个分支（新命令）
-git merge 分支名             //合并指定分支到当前分支
+git branch dev               //创建dev分支
+git branch -d dev            //删除dev分支
+git checkout dev             //切换到dev分支
+git switch dev               //切换到dev分支（新命令）
+git checkout -b dev          //创建dev分支，然后切换dev分支，等同于(git branch dev)+(git checkout dev)
+git checkout -b dev origin/dev  //本地创建dev分支，并与远程dev分支关联起来
+git switch -c dev         //创建dev分支，然后切换到dev分支（新命令）
+git merge dev             //合并dev分支到当前分支
 
 git stash                          //将当前仓库的修改存储起来，仓库恢复干净。-u可以添加untracked的文件
 git stash save "message"           //存储的时候添加message，方便查找
@@ -276,6 +280,11 @@ Ubuntu安装ssh服务器：sudo apt install openssh-server
 VS Code远程开发：
 1、安装remote ssh
 2、Ctrl+Shift+P，输入remote-ssh，选择connect current window to host，输入whwang16@172.30.12.89，然后输入远程登陆密码
+
+
+生成GUID的两种方法：
+1、通过www.guidgenerator.com在线生成
+2、powershell输入命令：new-guid
 
 
 
