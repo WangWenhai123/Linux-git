@@ -130,6 +130,7 @@ git commit -am "  "          //相比于-m省掉了git add步骤，即直接将�
 git commit -m "summary" -m ' //类似github desktop提交修改，单引号回车后可输入多行description，最后再以一个单引号结束
 git restore <file>           //撤销文件的修改（文件还未git add到暂存区）
 git restore --staged <file>  //将文件从暂存区中删除（文件已经git add到暂存区），但不会更改文件的内容
+git reset HEAD               //将暂存区的所有文件删除（文件已经git add到暂存区），但不会更改文件的内容
 git diff                     //当工作区有改动，暂存区为空，diff的对比是“工作区与最后一次commit提交的仓库的共同文件”；
                              //当工作区有改动，暂存区不为空，diff对比的是“工作区与暂存区的共同文件”
 git diff HEAD -- <file>      //对比工作区中的文件与HEAD指向的提交的仓库的文件的差异
@@ -192,9 +193,9 @@ gcc编译多个源文件：gcc -o <object file> <source file1> <source file2> ..
 
 
 git remote add origin <SSH URL>    //将本地仓库与远程仓库关联
-git push origin dev:dev1           //将本地仓库的dev分支的提交推送到远程库的dev1分支
-git push origin dev                //将本地仓库的dev分支的提交推送到远程库的dev分支
-git fetch origin dev               //将某个远程主机的更新全部取回本地仓库
+git push                           //将本地仓库的所有提交推送到远程库(默认为origin远程库)
+git push origin origin/dev dev     //将本地仓库的dev分支的提交推送到远程库的dev分支
+git fetch                          //从远程库(默认为origin远程库)获取所有更新并保存在本地仓库
 git pull origin dev1:dev           //将远程库的dev1分支拉取过来并与本地的dev分支合并
 git pull origin dev                //将远程库的dev分支拉取过来并与本地的当前分支合并，等效于git fetch origin dev与git merge FETCH_HEAD的组合
 git rebase 01234567^ 89abcdef --onto dev    //将另一分支的起始01234567提交到终止89abcdef提交（前开后闭，加了^后就是前闭后闭）复制到dev分支上。复制后HEAD处于游离状态，需要执行git switch dev和git reset --hard fedcba98（fedcba98是89abcdef复制过来后新的提交值）
@@ -223,6 +224,7 @@ git stash apply                    //恢复之前缓存的工作目录，不删�
 git stash apply stash@{1}          //恢复stash@{1}，不删除stash@{1}
 git stash drop stash@{2}           //丢弃stash@{2}存储，从列表中删除这个存储
 git cherry-pick <版本号>            //将指定版本号的提交应用到当前分支
+git revert <版本号>                 //回退指定的提交
 
 git tag <name>                     //在当前分支的最新提交上打一个标签
 git tag                            //查看所有标签（标签不是按时间顺序列出，而是按字母排序的）
