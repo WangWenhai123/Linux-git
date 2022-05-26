@@ -131,6 +131,7 @@ git commit -m "summary" -m ' //类似github desktop提交修改，单引号回�
 git restore <file>           //撤销文件的修改（文件还未git add到暂存区）
 git restore --staged <file>  //将文件从暂存区中删除（文件已经git add到暂存区），但不会更改文件的内容
 git reset HEAD               //将暂存区的所有文件删除（文件已经git add到暂存区），但不会更改文件的内容
+git checkout .               //撤销工作区所有文件的修改
 git diff                     //当工作区有改动，暂存区为空，diff的对比是“工作区与最后一次commit提交的仓库的共同文件”；
                              //当工作区有改动，暂存区不为空，diff对比的是“工作区与暂存区的共同文件”
 git diff HEAD -- <file>      //对比工作区中的文件与HEAD指向的提交的仓库的文件的差异
