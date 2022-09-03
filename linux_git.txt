@@ -300,3 +300,13 @@ VS Code远程开发：
 2837服务器密码：iflytek@123
 2831P服务器密码：iflytek@2021
 深圳WiFi密码：iflyttest
+
+
+
+
+
+cmake操作(Windows)：
+1、工程目录下生成CMakeLists.txt，最少包含cmake_minimum_required(),project(),add_executable()
+2、工程目录下新建build文件夹，cd build
+3、cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -G "Unix Makefiles"
+4、make或cmake --build .
