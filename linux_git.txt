@@ -218,6 +218,7 @@ git merge dev             //合并dev分支到当前分支
 
 git stash                          //将当前仓库的修改存储起来，仓库恢复干净。-u可以添加untracked的文件
 git stash save "message"           //存储的时候添加message，方便查找
+git stash save -u "message"        //存储的时候添加untracked的文件，并添加message
 git stash list                     //存储区的所有的存储
 git stash pop                      //恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除
 git stash pop stash@{0}            //恢复stash@{0}，并删除stash@{0}
