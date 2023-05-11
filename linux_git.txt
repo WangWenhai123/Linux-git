@@ -311,3 +311,7 @@ cmake操作(Windows)：
 2、工程目录下新建build文件夹，cd build
 3、cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -G "Unix Makefiles"
 4、make或cmake --build .
+
+
+
+linux device-tree存放位置：/proc/device-tree/（软链接到/sys/firmware/devicetree/base/）目录下有设备树根节点下的一级子节点，节点下如果还有子节点，则此节点为文件夹，否则为文件
